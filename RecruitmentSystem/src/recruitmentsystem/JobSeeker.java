@@ -17,6 +17,7 @@ public class JobSeeker extends User implements JobSeekerJobObserver  {
     private String email;
     private String education;
     private ArrayList<JobSeeker>experince;
+    private String CV;
     
     public JobSeeker(String name, int age, String education, ArrayList<JobSeeker> experince) {
         this.name = name;
