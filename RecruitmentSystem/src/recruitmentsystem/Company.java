@@ -12,14 +12,14 @@ import java.util.ArrayList;
  * @author Ahmed Kamal
  */
 public class Company extends User {
-  private String Name;
-  private String Location;
-  private String Email;
-  private ArrayList<Job> Vaccancies;
-  private ArrayList<Jobseeker> Visitors;
+    private String Name;
+    private String Location;
+    private String Email;
+    private ArrayList<Job> Vaccancies;
+    private ArrayList<JobSeeker> Visitors;
 
-    
-    public Company(String Name, String Location, String Email,ArrayList<job> Vaccancies,ArrayList<Jobseeker> Visitors ) {
+    public Company(String Name, String Location, String Email, ArrayList<Job> Vaccancies,
+            ArrayList<JobSeeker> Visitors) {
         this.Name = Name;
         this.Location = Location;
         this.Email = Email;
@@ -31,7 +31,7 @@ public class Company extends User {
         this.Name = Name;
     }
 
-    public void setLocation(int Location) {
+    public void setLocation(String Location) {
         this.Location = Location;
     }
 
@@ -51,7 +51,7 @@ public class Company extends User {
         return Name;
     }
 
-    public int getLocation() {
+    public String getLocation() {
         return Location;
     }
 
@@ -67,9 +67,22 @@ public class Company extends User {
         return Visitors;
     }
 
- 
-   
-   
-   
-   
+    @Override
+    public void createAccount() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void logIn() {
+        // TODO Auto-generated method stub
+
+    }
+
 }

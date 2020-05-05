@@ -11,14 +11,13 @@ import java.util.ArrayList;
  *
  * @author Kemiaa
  */
-public class JobSeeker extends User implements JobSeekerJobObserver  {
-   private String name;
-   private int age;
+public class JobSeeker extends User implements JobSeekerJobObserver {
+    private String name;
+    private int age;
     private String email;
     private String education;
-    private ArrayList<JobSeeker>experince;
-    private String CV;
-    
+    private ArrayList<JobSeeker> experince;
+
     public JobSeeker(String name, int age, String education, ArrayList<JobSeeker> experince) {
         this.name = name;
         this.age = age;
@@ -66,22 +65,4 @@ public class JobSeeker extends User implements JobSeekerJobObserver  {
         return experince;
     }
 
-    @Override
-    public void createAccount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void logIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-   
-   
-   
-   
 }
