@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Kemiaa
  */
-public class JobSeeker {
+public class JobSeeker extends User implements JobSeekerJobObserver  {
    private String name;
    private int age;
     private String email;
@@ -63,6 +63,21 @@ public class JobSeeker {
 
     public ArrayList<JobSeeker> getExperince() {
         return experince;
+    }
+
+    @Override
+    public void createAccount() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void logIn() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
    
