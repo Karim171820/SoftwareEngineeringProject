@@ -1,25 +1,29 @@
 package recruitmentsystem;
 
-public class SystemAdministrator extends User {
+public class SystemAdministrator extends UserAccount {
 
     private static SystemAdministrator Admin = null;
 
-    private SystemAdministrator() {
+
+    public SystemAdministrator(int role, String username, String password) {
+        super(role, username, password);
     }
 
+    
     public static SystemAdministrator getInstance() {
 
         if (Admin == null) {
-            Admin = new SystemAdministrator();
+            Admin = new SystemAdministrator(1,"admin","admin");
             return Admin;
         } else
             return Admin;
     }
 
+
     public String RemoveVac(int JobID) {
 
-        // Access the Database and get the job with this job id and remove it form the
-        // database
+        JobAdmin Remove = new JobAdmin();
+        Remove.RemoveVac(JobID);
 
         return null;
     }
@@ -41,7 +45,6 @@ public class SystemAdministrator extends User {
 
     }
 
-    @Override
     public void createAccount() {
 
     }

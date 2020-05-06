@@ -5,27 +5,31 @@
  */
 package recruitmentsystem;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
  *
  * @author Ahmed Kamal
  */
-public class Company extends User {
+public class Company extends UserAccount {
     private String Name;
     private String Location;
     private String Email;
     private ArrayList<Job> Vaccancies;
     private ArrayList<JobSeeker> Visitors;
 
-    public Company(String Name, String Location, String Email, ArrayList<Job> Vaccancies,
-            ArrayList<JobSeeker> Visitors) {
+  
+    public Company(String Name, String Location, String Email, ArrayList<Job> Vaccancies, ArrayList<JobSeeker> Visitors, int role, String username, String password) {
+        super(role, username, password);
         this.Name = Name;
         this.Location = Location;
         this.Email = Email;
         this.Vaccancies = Vaccancies;
         this.Visitors = Visitors;
     }
+   
+    
 
     public void setName(String Name) {
         this.Name = Name;
@@ -68,9 +72,13 @@ public class Company extends User {
     }
 
     public String RemoveVac(int JobID) {
-
-        // Access the Database and get the job with this job id and remove it form the
-        // database
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("DELETE FROM job WHERE ID = 2");  // ID='" + JobID + "'"
+            System.out.println("Vaccancy Removed");
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }
 
         return null;
     }
@@ -89,7 +97,6 @@ public class Company extends User {
         return null; // JOB DESC
     }
 
-    @Override
     public void createAccount() {
 
     }

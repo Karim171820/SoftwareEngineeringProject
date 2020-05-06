@@ -6,8 +6,8 @@ public class JobAdmin {
 
     public String RemoveVac(int JobID) {
 
-        // Access the Database and get the job with this job id and remove it form the
-        // database
+        Company Com = null;
+        Com.RemoveVac(JobID);
 
         return null;
     }
