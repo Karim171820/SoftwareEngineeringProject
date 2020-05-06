@@ -101,8 +101,6 @@ public class Job {
         return null; // JOB DESC
     }
 
-    // ArrayList<JobSubject> observerList;
-
     public void UpdateJob(int ID, String Name, String Desc, String Qual, String Publish) {
 
         // Access the database connection and exec this query
