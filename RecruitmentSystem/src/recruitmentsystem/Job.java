@@ -5,7 +5,10 @@
  */
 package recruitmentsystem;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -22,6 +25,16 @@ public class Job {
 
     public Job() {
     }
+
+    public Job(int JobID, String JobName, String JobDesc, String JobQual, String JobPD) {
+        this.JobID = JobID;
+        this.JobName = JobName;
+        this.JobDesc = JobDesc;
+        this.JobQual = JobQual;
+        this.JobPD = JobPD;
+    }
+    
+    
 
     public Job(int jobID, String jobName, String jobDesc, String jobQual, String jobPD,
             ArrayList<JobSubject> observerList) {
@@ -82,13 +95,26 @@ public class Job {
     }
 
     public ArrayList<Job> SearchForJob(String Name) {
-
-        ArrayList<Job> searchResult = new ArrayList<>();
-
-        // fetch all the data that matches the input from database and store it in the
-        // search result array list
-        // SQL Query .... {"SELECT * FROM ORPHANE Where JOBNAME ='" + Name + "'"
-        return searchResult;
+        
+     ArrayList<Job> searchResult = new ArrayList<>();
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
+            while (rs.next()) {
+                searchResult.add(new Job(rs.getInt("ID"), rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")));
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+         Iterator iterator = searchResult.iterator(); 
+  
+        System.out.println("Search Results "); 
+  
+        while (iterator.hasNext()) 
+            System.out.print(iterator.next() + " "); 
+  
+        System.out.println(); 
+        return null;
     }
 
     public String ViewJobDetails(String Name) {

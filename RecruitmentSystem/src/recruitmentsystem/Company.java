@@ -5,8 +5,10 @@
  */
 package recruitmentsystem;
 
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -92,8 +94,8 @@ public class Company extends UserAccount {
 
     public String ViewVisitors(ArrayList<JobSeeker> Visitors) {
 
-        // Displaying Function that displaies all the visitors for the user
 
+         
         return null; // JOB DESC
     }
 
