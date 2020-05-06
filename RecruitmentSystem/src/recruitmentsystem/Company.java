@@ -67,21 +67,40 @@ public class Company extends User {
         return Visitors;
     }
 
+    public String RemoveVac(int JobID) {
+
+        // Access the Database and get the job with this job id and remove it form the
+        // database
+
+        return null;
+    }
+
+    public Job postVacanies(String name, String desc, String qual, String publish) {
+
+        // where does the vac gets posted ???
+
+        return null;
+    }
+
+    public String ViewVisitors(ArrayList<JobSeeker> Visitors) {
+
+        // Displaying Function that displaies all the visitors for the user
+
+        return null; // JOB DESC
+    }
+
     @Override
     public void createAccount() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void logIn() {
-        // TODO Auto-generated method stub
 
     }
 
