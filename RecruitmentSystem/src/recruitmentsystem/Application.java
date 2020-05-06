@@ -16,7 +16,7 @@ public class Application {
     String date;
     String status;
 
-    public Application(int id, int jobSeekerID, int jobID, String date, String status) {
+    public Application(int id, int jobSeekerID, int jobID, String status) {
         this.id = id;
         this.jobSeekerID = jobSeekerID;
         this.jobID = jobID;
