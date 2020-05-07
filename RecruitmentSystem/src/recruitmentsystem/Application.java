@@ -8,6 +8,7 @@ package recruitmentsystem;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -76,8 +77,28 @@ public class Application implements  StatusSubject {
     }
 
     @Override
-    public void updateAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateAll(int applicationID) {
+   
+//         ArrayList<JobSeeker> searchResult = new ArrayList<>();
+//        try {
+//            Statement stmt = RecruitmentSystem.con.createStatement();
+//            ResultSet rs = stmt.executeQuery("SELECT * FROM observersubject Where subjectID = '" applicationID + "'");
+//            while (rs.next()) {
+//                searchResult.add(new Job (rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate"),rs.getInt("C_ID")));
+//            }
+//        } catch (Exception e) {
+//            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+//        }
+//         Iterator iterator = searchResult.iterator(); 
+//  
+//        System.out.println("Search Results "); 
+//  
+//        while (iterator.hasNext()) 
+//            System.out.print(iterator.next() + " "); 
+//  
+//        System.out.println(); 
+//        return null;
+        
     }
 
     @Override
