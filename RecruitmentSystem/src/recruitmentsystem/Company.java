@@ -85,13 +85,18 @@ public class Company extends UserAccount {
         return null;
     }
 
-    public Job postVacanies(String name, String desc, String qual, String publish) {
-
-        // where does the vac gets posted ???
-
+    public Job PostVacanies(String name, String desc, String qual, String publish) {      
+  
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into job (ID,name,description,qualification,publishDate,C_ID) values('" + name + "', '" + desc +  "', '" + qual + "','" + publish + "','" + getId() + "')");
+            System.out.println("Vaccancy posted Successfully ");
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }
         return null;
     }
-
+    
     public String ViewVisitors(ArrayList<JobSeeker> Visitors) {
 
 
