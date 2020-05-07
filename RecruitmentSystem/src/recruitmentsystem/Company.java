@@ -15,6 +15,7 @@ import java.util.Iterator;
  * @author Ahmed Kamal
  */
 public class Company extends UserAccount {
+    private int companyID;
     private String Name;
     private String Location;
     private String Email;
@@ -22,8 +23,11 @@ public class Company extends UserAccount {
     private ArrayList<JobSeeker> Visitors;
 
   
-    public Company(String Name, String Location, String Email, ArrayList<Job> Vaccancies, ArrayList<JobSeeker> Visitors, int role, String username, String password) {
+    public Company(int role, String username, String password,String Name, String Location, String Email ) {
         super(role, username, password);
+        
+             this.createCompanyAccount(Name, Location, Email, super.getId());
+        
         this.Name = Name;
         this.Location = Location;
         this.Email = Email;
@@ -31,6 +35,31 @@ public class Company extends UserAccount {
         this.Visitors = Visitors;
     }
    
+    
+      public void createCompanyAccount(String name,String location,String Email, int userID) {
+ String [] returnID = {"CompanyID"};
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into Company (name, location, email, U_ID) values('" + name + "', '" + location +  "', '" + Email +  "','" + userID + "')", returnID);
+            System.out.println("Company is Added");
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.setCompanyID(rs.getInt(1));
+                }
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }       
+    }
+
+    public void setCompanyID(int companyID) {
+        this.companyID = companyID;
+    }
+
+    public int getCompanyID() {
+        return companyID;
+    }
     
 
     public void setName(String Name) {
@@ -104,9 +133,7 @@ public class Company extends UserAccount {
         return null; // JOB DESC
     }
 
-    public void createAccount() {
-
-    }
+  
 
 
 

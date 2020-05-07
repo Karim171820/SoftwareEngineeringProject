@@ -44,16 +44,8 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
         this.email = email;
     }
     
-    public void setJobSeekerID(int id){
-        this.jobSeekerID = id;
-    }
     
-    public int getJobSeekerID(){
-        return this.jobSeekerID;
-    }
-    
-    
-    public void createJobSeekerAccount(String name, int age, String email, String education, int userID){
+        public void createJobSeekerAccount(String name, int age, String email, String education, int userID){
         String [] returnID = {"jobSeekerID"};
          try {
             Statement stmt = RecruitmentSystem.con.createStatement();
@@ -69,6 +61,20 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
             System.err.println("DATABASE INSERTION ERROR: " + e.toString());
         }         
     }
+    
+    
+    
+    
+    public void setJobSeekerID(int id){
+        this.jobSeekerID = id;
+    }
+    
+    public int getJobSeekerID(){
+        return this.jobSeekerID;
+    }
+    
+    
+
  
     
     public JobSeeker(int role,String username,String password,String name, int age, String education, ArrayList<JobSeeker> experince) {

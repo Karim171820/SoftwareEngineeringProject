@@ -40,9 +40,14 @@ public class RecruitmentSystem {
 //            Connection of database
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "recruitment_system", "root", "");    
             
-            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
-            j.updateAccount(j.getUserID(), "1234", "karim");
-            j.logIn("Abdelrahaman4", "Kodsy4");
+            
+            
+            Company c =new Company(1,"Udemy1","123456","Udemy","Smart village","Udemy@gmail.com");
+            
+            
+//            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+//            j.updateAccount(j.getUserID(), "1234", "karim");
+//            j.logIn("Abdelrahaman4", "Kodsy4");
             
             
 //            j.apply( 1, 1,"1/1/2020", "yes");
