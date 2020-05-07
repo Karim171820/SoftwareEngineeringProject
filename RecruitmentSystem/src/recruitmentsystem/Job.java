@@ -25,17 +25,7 @@ public class Job {
 
     public Job() {
     }
-    
-//    public Job(int jobID, String jobName, String jobDesc, String jobQual, String jobPD,ArrayList<JobSubject> observerList) {
-//        this.JobID = jobID;
-//        this.JobName = jobName;
-//        this.JobDesc = jobDesc;
-//        this.JobQual = jobQual;
-//        this.JobPD = jobPD;
-//        this.observerList = observerList;
-//    }
 
-    
     
     public Job(String JobName, String JobDesc, String JobQual, String JobPD,int companyID) {
         this.createJob(JobName, JobDesc, JobQual, JobPD, companyID);
@@ -46,24 +36,6 @@ public class Job {
             
     }
     
-public void createJob(String name,String jobDesc,String jobQual,String jobPD,int companyID){
-
-     String [] returnID = {"JobID"};
-         try {
-            Statement stmt = RecruitmentSystem.con.createStatement();
-            stmt.executeUpdate("insert into Job (name, description, qualification, publishDate, C_ID ) values('" + name + "', '" + jobDesc +  "', '" + jobQual +  "','" + jobPD +"','" + companyID + "')", returnID);
-            System.out.println("Job is Added");
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    this.setJobID(rs.getInt(1));
-                }
-                rs.close();
-            }
-        } catch (Exception e) {
-            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
-        } 
-    
-}
 
     public int getJobID() {
         return JobID;
@@ -112,6 +84,25 @@ public void createJob(String name,String jobDesc,String jobQual,String jobPD,int
     public void setObserverList(ArrayList<JobSubject> observerList) {
         this.observerList = observerList;
     }
+    
+    public void createJob(String name,String jobDesc,String jobQual,String jobPD,int companyID){
+
+     String [] returnID = {"JobID"};
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into Job (name, description, qualification, publishDate, C_ID ) values('" + name + "', '" + jobDesc +  "', '" + jobQual +  "','" + jobPD +"','" + companyID + "')", returnID);
+            System.out.println("Job is Added");
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.setJobID(rs.getInt(1));
+                }
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        } 
+    
+}
 
     public ArrayList<Job> SearchForJob(String Name) {
         
@@ -136,19 +127,8 @@ public void createJob(String name,String jobDesc,String jobQual,String jobPD,int
         return null;
     }
 
-    public String ViewJobDetails(String Name) {
-
-        // fetch the JOB DESC data that matches the input from database and store it in
-        // the
-        // a String and Display it
-        // SQL Query .... {"SELECT JOBDESC FROM ORPHANE Where JOBNAME ='" + Name + "'"
-
-        return null; // JOB DESC
-    }
-
     public void UpdateJob(String Name, String Desc, String Qual, String Publish) {
 
-        
           String [] returnID = {"JobID"};
          try {
             Statement stmt = RecruitmentSystem.con.createStatement();

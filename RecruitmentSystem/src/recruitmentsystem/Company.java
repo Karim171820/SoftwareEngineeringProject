@@ -8,7 +8,9 @@ package recruitmentsystem;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -120,9 +122,35 @@ public class Company extends UserAccount {
         return job;
     }
     
-   public void ManageStatus(){
+   public void ManageStatus(int ApplicationID){
        
-       
+      try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet app = stmt.executeQuery("SELECT jobSeekerID FROM application Where ID = '" + ApplicationID + "'");
+             int JobSeekerID = app.getInt(2);
+             
+            ResultSet js = stmt.executeQuery("SELECT education FROM jobseeker Where ID = '" + JobSeekerID + "'");
+            String Education = js.getString(5);
+            
+            String[] avEducations = new String[]{"BUE", "GUC", "AUC","FUE","MSA","MUST"};
+            List<String> list = Arrays.asList(avEducations);
+            boolean confirm;
+              
+              
+            if(list.contains(Education)){
+            confirm = true;
+                ConfirmationString(confirm);
+            }
+            else {
+            confirm = false;
+                ConfirmationString(confirm);
+            }
+            
+             
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+        
    }
    
    public String ConfirmationString(boolean confirmation){
