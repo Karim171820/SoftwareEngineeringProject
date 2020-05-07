@@ -116,18 +116,6 @@ public class Job {
         System.out.println(); 
         return null;
     }
-    
-    public void CreateVaccanies(String name, String desc, String qual, String publish) {      
-        Company C = null;
-  
-        try {
-            Statement stmt = RecruitmentSystem.con.createStatement();
-            stmt.executeUpdate("insert into job (ID,name,description,qualification,publishDate,C_ID) values('" + name + "', '" + desc +  "', '" + qual + "','" + publish + "')");
-            System.out.println("User added");
-        } catch (Exception e) {
-            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
-        }
-    }
 
     public String ViewJobDetails(String Name) {
 
