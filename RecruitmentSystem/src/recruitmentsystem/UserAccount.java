@@ -106,6 +106,7 @@ public abstract class UserAccount {
           try {
             Statement stmt = RecruitmentSystem.con.createStatement();
             ResultSet rs = stmt.executeQuery("select ID from useraccount where username = '" + username + "' AND  password = '" + password1 + "'");
+            
             if (rs.first()) {
                 System.out.println("Log In successfully");
                 return rs.getInt(1);

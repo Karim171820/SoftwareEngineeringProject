@@ -1,5 +1,7 @@
 package recruitmentsystem;
 
+import java.sql.Statement;
+
 public class SystemAdministrator extends UserAccount {
 
     private static SystemAdministrator Admin = null;
@@ -28,28 +30,29 @@ public class SystemAdministrator extends UserAccount {
         return null;
     }
 
-    private Void SuspendUser(int USERID) {
+    public String SuspendUser(int USERID) {
 
-        // Access the Database and deletes the user with the following id form the
-        // database
-
-        return null;
-
-    }
-
-    private String ConfirmVac(int jobID) {
-
-        // confrims all the vaccancies befor posting
-
-        return null;
+       try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("DELETE FROM useraccount WHERE ID ='" + USERID + "'");
+            System.out.println("User Suspended");
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }
+         String Status = "Removed Successfully";
+        return Status ;
 
     }
 
-    public void createAccount() {
-
+    public String ConfirmVac(int jobID) {
+        String Confirm = "Vaccancy Confirmed";
+        String Denied = "Vaccancy Denied";
+        int min = 1;
+        int max = 100000;
+        if (jobID >= min && jobID <= max)
+            return Confirm;
+        
+        else
+            return Denied;
     }
-
- 
-
-
 }

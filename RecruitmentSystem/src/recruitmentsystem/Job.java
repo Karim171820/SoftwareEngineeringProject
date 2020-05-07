@@ -25,57 +25,18 @@ public class Job {
 
     public Job() {
     }
-    
-    public Job(int jobID, String jobName, String jobDesc, String jobQual, String jobPD,
-            ArrayList<JobSubject> observerList) {
-        this.JobID = jobID;
-        this.JobName = jobName;
-        this.JobDesc = jobDesc;
-        this.JobQual = jobQual;
-        this.JobPD = jobPD;
-        this.observerList = observerList;
-    }
 
     
-    
-    public Job( String JobName, String JobDesc, String JobQual, String JobPD,int companyID) {
-        
+    public Job(String JobName, String JobDesc, String JobQual, String JobPD,int companyID) {
         this.createJob(JobName, JobDesc, JobQual, JobPD, companyID);
-        
-        this.JobID = JobID;
         this.JobName = JobName;
         this.JobDesc = JobDesc;
         this.JobQual = JobQual;
         this.JobPD = JobPD;
-        
-        
+            
     }
     
-    
-public void createJob(String name,String jobDesc,String jobQual,String jobPD,int companyID){
 
-     String [] returnID = {"JobID"};
-         try {
-            Statement stmt = RecruitmentSystem.con.createStatement();
-            stmt.executeUpdate("insert into Job (name, description, qualification, publishDate, C_ID ) values('" + name + "', '" + jobDesc +  "', '" + jobQual +  "','" + jobPD +"','" + companyID + "')", returnID);
-            System.out.println("Job is Added");
-            try (ResultSet rs = stmt.getGeneratedKeys()) {
-                if (rs.next()) {
-                    this.setJobID(rs.getInt(1));
-                }
-                rs.close();
-            }
-        } catch (Exception e) {
-            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
-        } 
-    
-}
-
-    
-    
-    
-    
-    
     public int getJobID() {
         return JobID;
     }
@@ -123,48 +84,65 @@ public void createJob(String name,String jobDesc,String jobQual,String jobPD,int
     public void setObserverList(ArrayList<JobSubject> observerList) {
         this.observerList = observerList;
     }
+    
+    public void createJob(String name,String jobDesc,String jobQual,String jobPD,int companyID){
 
-//    public ArrayList<Job> SearchForJob(String Name) {
-//        
-//     ArrayList<Job> searchResult = new ArrayList<>();
-//        try {
-//            
-//            Statement stmt = RecruitmentSystem.con.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
-//            while (rs.next()) {
-//                searchResult.add(new Job rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")), String.valueOf(rs.getInt("C_ID"))) ;
-//            }
-//        } catch (Exception e) {
-//            System.err.println("DATABASE QUERY ERROR: " + e.toString());
-//        }
-//         Iterator iterator = searchResult.iterator(); 
-//  
-//        System.out.println("Search Results "); 
-//  
-//        while (iterator.hasNext()) 
-//            System.out.print(iterator.next() + " "); 
-//  
-//        System.out.println(); 
-//        return null;
-//    }
+     String [] returnID = {"JobID"};
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into Job (name, description, qualification, publishDate, C_ID ) values('" + name + "', '" + jobDesc +  "', '" + jobQual +  "','" + jobPD +"','" + companyID + "')", returnID);
+            System.out.println("Job is Added");
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.setJobID(rs.getInt(1));
+                }
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        } 
+    
+}
 
-    public String ViewJobDetails(String Name) {
-
-        // fetch the JOB DESC data that matches the input from database and store it in
-        // the
-        // a String and Display it
-        // SQL Query .... {"SELECT JOBDESC FROM ORPHANE Where JOBNAME ='" + Name + "'"
-
-        return null; // JOB DESC
+    public ArrayList<Job> SearchForJob(String Name) {
+        
+     ArrayList<Job> searchResult = new ArrayList<>();
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
+            while (rs.next()) {
+                searchResult.add(new Job (rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate"),rs.getInt("C_ID")));
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+         Iterator iterator = searchResult.iterator(); 
+  
+        System.out.println("Search Results "); 
+  
+        while (iterator.hasNext()) 
+            System.out.print(iterator.next() + " "); 
+  
+        System.out.println(); 
+        return null;
     }
 
-    public void UpdateJob(int ID, String Name, String Desc, String Qual, String Publish) {
+    public void UpdateJob(String Name, String Desc, String Qual, String Publish) {
 
-        // Access the database connection and exec this query
-        // "UPDATE JOB SET JOBID='" + ID + "', JOBNAME='" + Name + "', JOBDESC='" +
-        // Desc+ "', JOBQUAL='" + Qual + "',JOBPD='" + Publish + "' WHERE ACCOUNT_ID=" +
-        // id + "";
-
+          String [] returnID = {"JobID"};
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("update job set name = '" + Name + "',description = '" + Desc +  "', qualification = '" + Qual +  "', publishDate = '" + Publish +"'");
+            System.out.println("Job Updated");
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.setJobID(rs.getInt(1));
+                }
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        } 
     }
 
 }

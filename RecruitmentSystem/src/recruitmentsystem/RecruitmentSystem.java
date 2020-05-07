@@ -68,6 +68,24 @@ public class RecruitmentSystem {
             System.err.println("DATABASE INSERTION ERROR: " + e.toString());
         }
          
-         
+        
+          ArrayList<Job> searchResult = new ArrayList<>();
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
+            while (rs.next()) {
+                searchResult.add(new Job(rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate"),rs.getInt("C_ID")));
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+         Iterator iterator = searchResult.iterator(); 
+  
+        System.out.println("Search Results "); 
+  
+        while (iterator.hasNext()) 
+            System.out.print(iterator.next() + " "); 
+  
+        System.out.println(); 
     }
 }

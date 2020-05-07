@@ -8,7 +8,9 @@ package recruitmentsystem;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -105,37 +107,61 @@ public class Company extends UserAccount {
     public String RemoveVac(int JobID) {
          try {
             Statement stmt = RecruitmentSystem.con.createStatement();
-            stmt.executeUpdate("DELETE FROM job WHERE ID = 2");  // ID='" + JobID + "'"
+            stmt.executeUpdate("DELETE FROM job WHERE ID ='" + JobID + "'");
             System.out.println("Vaccancy Removed");
         } catch (Exception e) {
             System.err.println("DATABASE INSERTION ERROR: " + e.toString());
         }
-
-        return null;
+         String Status = "Removed Successfully";
+        return Status ;
     }
 
-    public Job PostVacanies(String name, String desc, String qual, String publish) {      
-  
-        try {
-            Statement stmt = RecruitmentSystem.con.createStatement();
-            stmt.executeUpdate("insert into job (ID,name,description,qualification,publishDate,C_ID) values('" + name + "', '" + desc +  "', '" + qual + "','" + publish + "','" + getId() + "')");
-            System.out.println("Vaccancy posted Successfully ");
-        } catch (Exception e) {
-            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
-        }
-        return null;
+    public Job PostVacanies(String name, String desc, String qual, String publish, int CID) {
+        
+        Job job = new Job(name, desc, qual, publish, this.companyID);
+        return job;
     }
     
-    public String ViewVisitors(ArrayList<JobSeeker> Visitors) {
-
-
-         
-        return null; // JOB DESC
-    }
-
-  
-
-
-
-  
+   public void ManageStatus(int ApplicationID){
+       
+      try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet app = stmt.executeQuery("SELECT jobSeekerID FROM application Where ID = '" + ApplicationID + "'");
+             int JobSeekerID = app.getInt(2);
+             
+            ResultSet js = stmt.executeQuery("SELECT education FROM jobseeker Where ID = '" + JobSeekerID + "'");
+            String Education = js.getString(5);
+            
+            String[] avEducations = new String[]{"BUE", "GUC", "AUC","FUE","MSA","MUST"};
+            List<String> list = Arrays.asList(avEducations);
+            boolean confirm;
+              
+              
+            if(list.contains(Education)){
+            confirm = true;
+                ConfirmationString(confirm);
+            }
+            else {
+            confirm = false;
+                ConfirmationString(confirm);
+            }
+            
+             
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+        
+   }
+   
+   public String ConfirmationString(boolean confirmation){
+       
+       String ConfimrationMassage = "You have been successfully accepted For the the applied Job, Please Conatct the Company for further demonstration";
+       
+       if (confirmation== true){
+           return ConfimrationMassage;
+       }
+       else 
+           return ConfimrationMassage;
+       
+   }
 }
