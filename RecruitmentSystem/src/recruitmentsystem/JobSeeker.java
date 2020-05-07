@@ -5,6 +5,8 @@
  */
 package recruitmentsystem;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -18,13 +20,53 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
     private String email;
     private String education;
     private ArrayList<JobSeeker>experince;
+    private int userID;
+    
+    public void setUserID(int userID){
+        this.userID = userID;
+    }
+    
+    public int getUserID(){
+        return this.userID;
+    }
 
-    public JobSeeker(int role,String username, String password, String name) {
+    public JobSeeker(int role,String username, String password, String name, int age, String email, String education) {
         super(role, username, password);
+        //Add Record to Database
+        this.createJobSeekerAccount(name, age, email, education, super.getId());
+        
+        this.age = age;
+        this.userID = super.getId();
+        this.education = education;
         this.name = name;
+        this.email = email;
+    }
+    
+    public void setJobSeekerID(int id){
+        this.jobSeekerID = id;
+    }
+    
+    public int getJobSeekerID(){
+        return this.jobSeekerID;
     }
     
     
+    public void createJobSeekerAccount(String name, int age, String email, String education, int userID){
+        String [] returnID = {"jobSeekerID"};
+         try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into jobseeker (name, age, email, education, U_ID) values('" + name + "', '" + age+  "', '" + email + "', '" + education + "','" + userID + "')", returnID);
+            System.out.println("Job Seeker is Added");
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    this.setJobSeekerID(rs.getInt(1));
+                }
+                rs.close();
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }         
+    }
  
     
     public JobSeeker(int role,String username,String password,String name, int age, String education, ArrayList<JobSeeker> experince) {
@@ -76,30 +118,20 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
     }
 
     
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void logIn() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
    
-   public void apply(int id, int jobSeekerID,int jobID,String status){
-   Application application= new Application( id, jobSeekerID,  jobID, status);
+   public void apply( int jobSeekerID,int jobID,String Date,String status){
+//   Application application= new Application( id, jobSeekerID,  jobID, status);
    
    // add application record in application table
-   
-   /*public void addStudent(Student s) {
+  
         try {
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate("insert into students values('" + s.getName() + "', " + s.getGPA() + ")");
-            System.out.println("Student added");
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            stmt.executeUpdate("insert into application ( jobSeekerID, jobID,Date,status) values('" + jobSeekerID + "', '" + jobID+  "', '" + Date +"', '" + status + "')");
+            System.out.println("application added");
         } catch (Exception e) {
             System.err.println("DATABASE INSERTION ERROR: " + e.toString());
         }
-    }*/
    
    }
    

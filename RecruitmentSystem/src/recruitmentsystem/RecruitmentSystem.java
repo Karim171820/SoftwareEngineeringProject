@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Scanner; 
 
 /**
  *
@@ -32,8 +33,15 @@ public class RecruitmentSystem {
             //Loading the jdbc driver
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             //Get a connection to database
+            
+//            Connection of database
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "recruitment_system", "root", "");
-            JobSeeker j = new JobSeeker(1, "karim", "Kemia", "Koky");
+           
+            
+            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+            
+//            j.apply( 1, 1,"1/1/2020", "yes");
+            
         } catch (Exception e) {
             System.err.println("DATABASE CONNECTION ERROR: " + e.toString());
 
