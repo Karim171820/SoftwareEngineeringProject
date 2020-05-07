@@ -11,6 +11,6 @@ package recruitmentsystem;
  */
 public interface JobSeekerStatusObserver {
     
-    public void updateStatus();
+    public void updateStatus(String status);
     
 }

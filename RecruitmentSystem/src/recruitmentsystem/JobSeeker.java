@@ -20,7 +20,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
     private int age;
     private String email;
     private String education;
-    private ArrayList<JobSeeker>experince;
+    private ArrayList<JobSeekerExp>experince;
     private int userID;
     
     public void setUserID(int userID){
@@ -77,7 +77,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
 
  
     
-    public JobSeeker(int role,String username,String password,String name, int age, String education, ArrayList<JobSeeker> experince) {
+    public JobSeeker(int role,String username,String password,String name, int age, String education, ArrayList<JobSeekerExp> experince) {
    super(role, username, password);
 
         this.name = name;
@@ -102,7 +102,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
         this.education = education;
     }
 
-    public void setExperince(ArrayList<JobSeeker> experince) {
+    public void setExperince(ArrayList<JobSeekerExp> experince) {
         this.experince = experince;
     }
 
@@ -122,7 +122,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
         return education;
     }
 
-    public ArrayList<JobSeeker> getExperince() {
+    public ArrayList<JobSeekerExp> getExperince() {
         return experince;
     }    
  

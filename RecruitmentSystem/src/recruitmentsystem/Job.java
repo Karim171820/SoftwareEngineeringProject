@@ -132,7 +132,7 @@ public void createJob(String name,String jobDesc,String jobQual,String jobPD,int
 //            Statement stmt = RecruitmentSystem.con.createStatement();
 //            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
 //            while (rs.next()) {
-//                searchResult.add(new Job(rs.getInt("ID"), rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")), String.valueOf(rs.getInt("C_ID"))) ;
+//                searchResult.add(new Job rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")), String.valueOf(rs.getInt("C_ID"))) ;
 //            }
 //        } catch (Exception e) {
 //            System.err.println("DATABASE QUERY ERROR: " + e.toString());

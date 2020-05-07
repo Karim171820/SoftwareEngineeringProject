@@ -46,18 +46,19 @@ public class RecruitmentSystem {
             Job j= new Job("Software Engineer","Coding","gradate","1/1/2020",c.getCompanyID());
             
             
-            JobSeeker karim = new JobSeeker(2 , "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
-            karim.updateAccount(karim.getUserID(), "1234", "karim");
-            karim.logIn("Abdelrahaman4", "Kodsy4");
-                      
-          karim.apply( karim.getJobSeekerID(), j.getJobID(),"1/1/2020", "yes");
+            
+            
+//            JobSeeker karim = new JobSeeker(2 , "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+//            karim.updateAccount(karim.getUserID(), "1234", "karim");
+//            karim.logIn("Abdelrahaman4", "Kodsy4");                     
+//          karim.apply( karim.getJobSeekerID(), j.getJobID(),"1/1/2020", "yes");
+
+
    
         } catch (Exception e) {
             System.err.println("DATABASE CONNECTION ERROR: " + e.toString());
 
         }
-
-        
         // Remove Vac
          try {
             Statement stmt = RecruitmentSystem.con.createStatement();
@@ -68,23 +69,5 @@ public class RecruitmentSystem {
         }
          
          
-          ArrayList<Job> searchResult = new ArrayList<>();
-        try {
-            Statement stmt = RecruitmentSystem.con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
-            while (rs.next()) {
-                searchResult.add(new Job(rs.getInt("ID"), rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")));
-            }
-        } catch (Exception e) {
-            System.err.println("DATABASE QUERY ERROR: " + e.toString());
-        }
-         Iterator iterator = searchResult.iterator(); 
-  
-        System.out.println("Search Results "); 
-  
-        while (iterator.hasNext()) 
-            System.out.print(iterator.next() + " "); 
-  
-        System.out.println(); 
     }
 }

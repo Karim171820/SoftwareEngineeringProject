@@ -12,7 +12,7 @@ package recruitmentsystem;
 public interface StatusSubject {
  
   public void updateAll();
- public void RegisterObserver();
-  public void UnRegisterObserber();
+ public void RegisterObserver(int jobSeeker, int applicationID);
+  public void UnRegisterObserber(int JobSeekerID);
     
 }
