@@ -13,10 +13,11 @@ import java.util.ArrayList;
  *
  * @author Kemiaa
  */
-public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
+
+public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
     private int jobSeekerID;
-   private String name;
-   private int age;
+    private String name;
+    private int age;
     private String email;
     private String education;
     private ArrayList<JobSeeker>experince;
@@ -31,6 +32,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
     }
 
     public JobSeeker(int role,String username, String password, String name, int age, String email, String education) {
+
         super(role, username, password);
         //Add Record to Database
         this.createJobSeekerAccount(name, age, email, education, super.getId());
@@ -71,6 +73,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
     
     public JobSeeker(int role,String username,String password,String name, int age, String education, ArrayList<JobSeeker> experince) {
    super(role, username, password);
+
         this.name = name;
         this.age = age;
         this.education = education;
@@ -115,9 +118,7 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver  {
 
     public ArrayList<JobSeeker> getExperince() {
         return experince;
-    }
-
-    
+    }    
  
    
    public void apply( int jobSeekerID,int jobID,String Date,String status){
@@ -160,7 +161,5 @@ public void publishExperience(int numOfyears,String companyName,String title,  A
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
 
 }
