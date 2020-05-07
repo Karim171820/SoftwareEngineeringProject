@@ -99,6 +99,8 @@ public class JobSeekerTest {
         // TODO review the generated test code and remove the default call to fail.
     }
 
+
+
     /**
      * Test of setJobSeekerID method, of class JobSeeker.
      */
@@ -179,19 +181,6 @@ public class JobSeekerTest {
     }
 
     /**
-     * Test of setExperince method, of class JobSeeker.
-     */
-    @Test
-    public void testSetExperince() {
-        System.out.println("setExperince");
-        ArrayList<JobSeeker> experince = null;
-        JobSeeker instance = null;
-        instance.setExperince(experince);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getName method, of class JobSeeker.
      */
     @Test
@@ -254,8 +243,8 @@ public class JobSeekerTest {
     public void testGetExperince() {
         System.out.println("getExperince");
         JobSeeker instance = null;
-        ArrayList<JobSeeker> expResult = null;
-        ArrayList<JobSeeker> result = instance.getExperince();
+        ArrayList<JobSeekerExp> expResult = null;
+        ArrayList<JobSeekerExp> result = instance.getExperince();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -265,7 +254,7 @@ public class JobSeekerTest {
      * Test of apply method, of class JobSeeker.
      */
     @Test
-    public void testApply() {
+     public void testApply() {
         String name = "abdelrahman";
         String Username = "tester1";
         int age = 0;
@@ -292,7 +281,6 @@ public class JobSeekerTest {
 
     }
 
-
     /**
      * Test of publishExperience method, of class JobSeeker.
      */
@@ -317,6 +305,19 @@ public class JobSeekerTest {
         System.out.println("update");
         JobSeeker instance = null;
         instance.update();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setExperince method, of class JobSeeker.
+     */
+    @Test
+    public void testSetExperince() {
+        System.out.println("setExperince");
+        ArrayList<JobSeeker> experince = null;
+        JobSeeker instance = null;
+        instance.setExperince(experince);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

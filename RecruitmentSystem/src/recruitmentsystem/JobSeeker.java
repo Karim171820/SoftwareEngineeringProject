@@ -102,9 +102,6 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
         this.education = education;
     }
 
-    public void setExperince(ArrayList<JobSeekerExp> experince) {
-        this.experince = experince;
-    }
 
     public String getName() {
         return name;
@@ -165,6 +162,10 @@ public void publishExperience(int numOfyears,String companyName,String title,  A
 
     @Override
     public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setExperince(ArrayList<JobSeeker> experince) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
