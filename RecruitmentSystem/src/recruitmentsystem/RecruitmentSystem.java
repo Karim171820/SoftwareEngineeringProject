@@ -46,12 +46,11 @@ public class RecruitmentSystem {
             Job j= new Job("Software Engineer","Coding","gradate","1/1/2020",c.getCompanyID());
             
             
-//            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
-//            j.updateAccount(j.getUserID(), "1234", "karim");
-//            j.logIn("Abdelrahaman4", "Kodsy4");
-            
-            
-//            j.apply( 1, 1,"1/1/2020", "yes");
+            JobSeeker karim = new JobSeeker(2 , "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+            karim.updateAccount(karim.getUserID(), "1234", "karim");
+            karim.logIn("Abdelrahaman4", "Kodsy4");
+                      
+          karim.apply( karim.getJobSeekerID(), j.getJobID(),"1/1/2020", "yes");
    
         } catch (Exception e) {
             System.err.println("DATABASE CONNECTION ERROR: " + e.toString());
