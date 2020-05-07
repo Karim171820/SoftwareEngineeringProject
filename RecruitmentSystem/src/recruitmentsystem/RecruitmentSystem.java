@@ -74,7 +74,7 @@ public class RecruitmentSystem {
             Statement stmt = RecruitmentSystem.con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
             while (rs.next()) {
-                searchResult.add(new Job(rs.getInt("ID"), rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate")));
+                searchResult.add(new Job(rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate"),rs.getInt("C_ID")));
             }
         } catch (Exception e) {
             System.err.println("DATABASE QUERY ERROR: " + e.toString());
