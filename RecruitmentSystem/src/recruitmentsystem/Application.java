@@ -77,27 +77,23 @@ public class Application implements  StatusSubject {
     }
 
     @Override
-    public void updateAll(int applicationID) {
-   
-//         ArrayList<JobSeeker> searchResult = new ArrayList<>();
-//        try {
-//            Statement stmt = RecruitmentSystem.con.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM observersubject Where subjectID = '" applicationID + "'");
-//            while (rs.next()) {
-//                searchResult.add(new Job (rs.getString("name"), rs.getString("description"), rs.getString("qualification"), rs.getString("publishDate"),rs.getInt("C_ID")));
-//            }
-//        } catch (Exception e) {
-//            System.err.println("DATABASE QUERY ERROR: " + e.toString());
-//        }
-//         Iterator iterator = searchResult.iterator(); 
-//  
-//        System.out.println("Search Results "); 
-//  
-//        while (iterator.hasNext()) 
-//            System.out.print(iterator.next() + " "); 
-//  
-//        System.out.println(); 
-//        return null;
+    public void updateAll(int applicationID, String newStatus) {
+      int jobSeekerID;
+        
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT observerID FROM observersubject Where subjectID = '" + applicationID + "'");
+            if (rs.next()) {
+              
+                jobSeekerID = Integer.parseInt(rs.getString("observerID"));
+                JobSeeker temp = new JobSeeker();
+                temp.updateStatus(newStatus);
+                
+            }
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+ 
         
     }
 

@@ -165,7 +165,7 @@ public class Company extends UserAccount {
             confirm = true;
                 ConfirmationString(confirm);
                 Application application = getApplicationByID(ApplicationID);
-                application.updateAll(ApplicationID);
+                application.updateAll(ApplicationID, "yes");
                 
             }
             else {

@@ -19,6 +19,10 @@ public abstract class UserAccount {
     private int role;
     private String userName;
     private String password;
+    
+    public UserAccount(){
+        
+    }
 
     UserAccount(int role, String username, String password) {
         this.createAccount(role, username, password);
