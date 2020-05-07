@@ -11,7 +11,7 @@ package recruitmentsystem;
  */
 public interface StatusSubject {
  
-  public void updateAll();
+  public void updateAll(int applicationID);
  public void RegisterObserver(int jobSeeker, int applicationID);
   public void UnRegisterObserber(int JobSeekerID);
     

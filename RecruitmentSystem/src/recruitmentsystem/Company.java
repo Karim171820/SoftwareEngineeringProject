@@ -122,6 +122,26 @@ public class Company extends UserAccount {
         return job;
     }
     
+    public Application getApplicationByID(int ApplicationID){
+    
+        Application temp;
+                 try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from application where ID = '" + ApplicationID + "'");
+            
+            if (rs.next()) {
+                temp = new Application (rs.getInt("ID"), rs.getInt("jobSeekerID"), rs.getInt("jobID"),rs.getString("status"));
+               return temp ;
+            }
+            
+      
+        } catch (Exception e) {
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
+        }
+        
+             return null; 
+    }
+    
    public void ManageStatus(int ApplicationID){
        
       try {
@@ -132,14 +152,21 @@ public class Company extends UserAccount {
             ResultSet js = stmt.executeQuery("SELECT education FROM jobseeker Where ID = '" + JobSeekerID + "'");
             String Education = js.getString(5);
             
+            
             String[] avEducations = new String[]{"BUE", "GUC", "AUC","FUE","MSA","MUST"};
             List<String> list = Arrays.asList(avEducations);
             boolean confirm;
+            
+             stmt.executeUpdate("update Application set status = " + " yes" +   " where ID = '" + ApplicationID + "'");
+                System.out.println("Status Updated");
               
               
             if(list.contains(Education)){
             confirm = true;
                 ConfirmationString(confirm);
+                Application application = getApplicationByID(ApplicationID);
+                application.updateAll(ApplicationID);
+                
             }
             else {
             confirm = false;
