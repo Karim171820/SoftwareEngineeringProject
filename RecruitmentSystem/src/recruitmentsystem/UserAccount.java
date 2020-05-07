@@ -78,15 +78,26 @@ public abstract class UserAccount {
     }
 
 //       TO DO
-    public void update() {
+    public void updateAccount(int id,String password,String username) {
 
-//          try {
+//       add in the Table User
+        try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+             stmt.executeUpdate("update useraccount set password = " + password +   " where ID = '" + id + "'");
+            System.out.println("User Updated");
+        } catch (Exception e) {
+            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+        }
+        
+//                try {
 //            Statement stmt = con.createStatement();
 //            stmt.executeUpdate("update students set gpa = " + newGPA + "where name = '" + name + "'");
 //            System.out.println("Student updated");
 //        } catch (Exception e) {
 //            System.err.println("DATABASE UPDATE ERROR: " + e.toString());
 //        }
+        
+        
     }
 //   TO DO
 

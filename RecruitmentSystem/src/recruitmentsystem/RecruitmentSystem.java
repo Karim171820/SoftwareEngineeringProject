@@ -39,6 +39,7 @@ public class RecruitmentSystem {
            
             
             JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+            j.updateAccount(j.getUserID(), "1234", "karim");
             
 //            j.apply( 1, 1,"1/1/2020", "yes");
             
