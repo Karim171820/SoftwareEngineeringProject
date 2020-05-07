@@ -43,6 +43,7 @@ public class RecruitmentSystem {
             
             
             Company c =new Company(1,"Udemy1","123456","Udemy","Smart village","Udemy@gmail.com");
+            Job j= new Job("Software Engineer","Coding","gradate","1/1/2020",c.getCompanyID());
             
             
 //            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
