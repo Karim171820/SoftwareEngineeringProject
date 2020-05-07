@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Kemiaa
  */
 
-public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
+public class JobSeeker extends UserAccount implements JobSeekerStatusObserver {
     private int jobSeekerID;
     private String name;
     private int age;
@@ -29,6 +29,10 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
     
     public int getUserID(){
         return this.userID;
+    }
+    
+    public JobSeeker(){
+        
     }
 
     public JobSeeker(int role,String username, String password, String name, int age, String email, String education) {
@@ -142,30 +146,31 @@ public class JobSeeker extends UserAccount implements JobSeekerJobObserver {
    
    }
    
-public void publishExperience(int numOfyears,String companyName,String title,  ArrayList<String> skills)
-{
-
-//       Add Exp in table JobSeekerExp
+   public JobSeeker getJobSeekerByID(int jobSeekerID){
     
-    /*
-    
-        public void addStudent(Student s) {
-        try {
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate("insert into students values('" + s.getName() + "', " + s.getGPA() + ")");
-            System.out.println("Student added");
+        JobSeeker temp;
+                 try {
+            Statement stmt = RecruitmentSystem.con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from jobseeker where jobSeekerID = '" + jobSeekerID + "'");
+            
+            if (rs.next()) {
+                temp = new JobSeeker();
+               return temp ;
+            }
+            
+      
         } catch (Exception e) {
-            System.err.println("DATABASE INSERTION ERROR: " + e.toString());
+            System.err.println("DATABASE QUERY ERROR: " + e.toString());
         }
+        
+             return null; 
     }
-    
-    */
-    
-}  
+
+ 
 
     @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateStatus(String status) {
+            System.out.println("My Job Application Status has been changed to: " + status);
     }
 
 }
