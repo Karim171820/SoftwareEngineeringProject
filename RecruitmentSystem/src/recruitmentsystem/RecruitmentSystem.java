@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Scanner; 
 
 /**
  *
@@ -35,8 +36,23 @@ public class RecruitmentSystem {
             //Loading the jdbc driver
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             //Get a connection to database
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "recruitment_system", "root", "");
-            JobSeeker j = new JobSeeker(1, "ahmed", "amer", "nconc");
+            
+//            Connection of database
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "recruitment_system", "root", "");    
+            
+            
+            
+            Company c =new Company(1,"Udemy1","123456","Udemy","Smart village","Udemy@gmail.com");
+            Job j= new Job("Software Engineer","Coding","gradate","1/1/2020",c.getCompanyID());
+            
+            
+//            JobSeeker j = new JobSeeker(2, "Abdelrahaman4", "Kodsy4", "Adnan4", 20, "karim@gmail.com", "BUE");
+//            j.updateAccount(j.getUserID(), "1234", "karim");
+//            j.logIn("Abdelrahaman4", "Kodsy4");
+            
+            
+//            j.apply( 1, 1,"1/1/2020", "yes");
+   
         } catch (Exception e) {
             System.err.println("DATABASE CONNECTION ERROR: " + e.toString());
 
