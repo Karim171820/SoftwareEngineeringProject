@@ -98,6 +98,7 @@ public class Job {
         
      ArrayList<Job> searchResult = new ArrayList<>();
         try {
+            
             Statement stmt = RecruitmentSystem.con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM job Where name = 'Junior Software Engi'");
             while (rs.next()) {

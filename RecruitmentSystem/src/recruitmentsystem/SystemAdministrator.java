@@ -49,14 +49,7 @@ public class SystemAdministrator extends UserAccount {
 
     }
 
-    @Override
-    public void update() {
+ 
 
-    }
-
-    @Override
-    public void logIn() {
-
-    }
 
 }
