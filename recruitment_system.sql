@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 01:38 PM
+-- Generation Time: May 08, 2020 at 02:04 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -35,6 +35,13 @@ CREATE TABLE `application` (
   `status` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `application`
+--
+
+INSERT INTO `application` (`ID`, `jobSeekerID`, `jobID`, `Date`, `status`) VALUES
+(3, 18, 2, '1/1/2020', 'yes');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +55,18 @@ CREATE TABLE `company` (
   `email` varchar(25) NOT NULL,
   `U_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `company`
+--
+
+INSERT INTO `company` (`ID`, `name`, `location`, `email`, `U_ID`) VALUES
+(1, 'Udemy', 'Smart village', 'Udemy@gmail.com', 35),
+(2, 'Udemy', 'Smart village', 'Udemy@gmail.com', 36),
+(3, 'Udemy', 'Smart village', 'Udemy@gmail.com', 37),
+(4, 'Udemy', 'Smart village', 'Udemy@gmail.com', 38),
+(5, 'Udemy', 'Smart village', 'Udemy@gmail.com', 39),
+(6, 'Udemy', 'Smart village', 'Udemy@gmail.com', 41);
 
 -- --------------------------------------------------------
 
@@ -64,6 +83,15 @@ CREATE TABLE `job` (
   `C_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `job`
+--
+
+INSERT INTO `job` (`ID`, `name`, `description`, `qualification`, `publishDate`, `C_ID`) VALUES
+(1, 'Software Engineer', 'Coding', 'gradate', '1/1/2020', 4),
+(2, 'Software Engineer', 'Coding', 'gradate', '1/1/2020', 5),
+(3, 'Software Engineer', 'Coding', 'gradate', '1/1/2020', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -79,6 +107,22 @@ CREATE TABLE `jobseeker` (
   `U_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `jobseeker`
+--
+
+INSERT INTO `jobseeker` (`jobSeekerID`, `name`, `age`, `email`, `education`, `U_ID`) VALUES
+(9, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 26),
+(10, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 27),
+(11, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 28),
+(12, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 29),
+(13, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 30),
+(14, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 31),
+(15, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 32),
+(16, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 33),
+(17, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 34),
+(18, 'Adnan4', 20, 'karim@gmail.com', 'BUE', 40);
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +135,18 @@ CREATE TABLE `jobseekerexp` (
   `title` varchar(20) NOT NULL,
   `skills` int(11) NOT NULL,
   `JS_ID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `observersubject`
+--
+
+CREATE TABLE `observersubject` (
+  `ID` int(11) NOT NULL,
+  `subjectID` int(11) NOT NULL,
+  `observerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,7 +177,23 @@ CREATE TABLE `useraccount` (
 --
 
 INSERT INTO `useraccount` (`ID`, `Role`, `password`, `username`) VALUES
-(1, 1, '123456', 'EzzatMahmoud');
+(26, 2, 'Kodsy4', 'Abdelrahaman4'),
+(27, 2, 'Kodsy4', 'Abdelrahaman4'),
+(28, 2, 'Kodsy4', 'Abdelrahaman4'),
+(29, 2, 'Kodsy4', 'Abdelrahaman4'),
+(30, 2, 'Kodsy4', 'Abdelrahaman4'),
+(31, 2, 'Kodsy4', 'Abdelrahaman4'),
+(32, 2, '1234', 'Abdelrahaman4'),
+(33, 2, '1234', 'Abdelrahaman4'),
+(34, 2, '1234', 'Abdelrahaman4'),
+(35, 1, '123456', 'Udemy1'),
+(36, 1, '123456', 'Udemy1'),
+(37, 1, '123456', 'Udemy1'),
+(38, 1, '123456', 'Udemy1'),
+(39, 1, '123456', 'Udemy1'),
+(40, 2, '1234', 'Abdelrahaman4'),
+(41, 1, '123456', 'Udemy1'),
+(42, 1, '1234', 'karim');
 
 --
 -- Indexes for dumped tables
@@ -163,6 +235,12 @@ ALTER TABLE `jobseekerexp`
   ADD KEY `JS_ID` (`JS_ID`);
 
 --
+-- Indexes for table `observersubject`
+--
+ALTER TABLE `observersubject`
+  ADD PRIMARY KEY (`ID`,`subjectID`);
+
+--
 -- Indexes for table `systemadministrator`
 --
 ALTER TABLE `systemadministrator`
@@ -182,25 +260,31 @@ ALTER TABLE `useraccount`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jobseeker`
 --
 ALTER TABLE `jobseeker`
-  MODIFY `jobSeekerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `jobSeekerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `observersubject`
+--
+ALTER TABLE `observersubject`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `systemadministrator`
@@ -212,7 +296,7 @@ ALTER TABLE `systemadministrator`
 -- AUTO_INCREMENT for table `useraccount`
 --
 ALTER TABLE `useraccount`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- Constraints for dumped tables
